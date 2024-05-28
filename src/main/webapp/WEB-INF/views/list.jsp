@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>
-                <li><a href="http://localhost:8099/writeform">상품등록하기</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="http://localhost:8099/signinform">signin</a></li>
                 <li><a href="http://localhost:8099/loginform">Login</a></li>
             </ul>

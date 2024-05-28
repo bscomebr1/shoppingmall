@@ -1,13 +1,13 @@
 package com.example.mall.service;
 
 
-import java.util.Optional;
+import java.util.List;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.mall.dao.IMalldao;
+import com.example.mall.dto.Goods;
 import com.example.mall.dto.Membersdto;
 
 @Service
@@ -20,19 +20,15 @@ public class MallService {
 		
 		imd.memberjoin(mto);
 	}
-	/*
-	public void login(String username, String password) {
 	
-		imd.login(username, password);
-	}*/
-	
-	public Membersdto login(Membersdto member) {
-        Optional<Membersdto> loginMember = imd.findByMemIdAndMemPw(member.getUsername() , member.getPassword());
-        return loginMember.orElse(null);
+	public List<Goods> getGoodsList() {
+		List<Goods> list = imd.goodslist();
+				
+		return list;
 		
-    }
+	}
 	
-	
+		
 	
 	
 	

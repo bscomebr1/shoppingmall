@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>
-                <li><a href="http://localhost:8099/writeform">상품등록하기</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="http://localhost:8099/signinform">signin</a></li>
                 <li><a href="http://localhost:8099/loginform">Login</a></li>
             </ul>
@@ -23,26 +23,16 @@
     </header>
     
     <main>
-      <table border=1>
-      <thead>
-      	<tr>
-      		<th>상품명</th><th>상품가격</th><th>상품설명</th><th>장바구니</th>
-      	</tr>
-      </thead>
-      <tbody>
-      	<c:forEach var="dto" items="${list }">
-      	<tr>
-      		<td>${dto.odsname }</td>
-      		<td>${dto.odsprice }</td>
-      		<td>${dto.content }</td>
-      		<td><input type="button" value="장바구니" name=""></td>
-      	</tr>
-      </c:forEach>
-      </tbody>
-      
-      
-      </table>
-      
+    
+    <form action="writegoods" method="post">
+		   	<label for="odsname">상품명:</label><br>
+		   	<input type="text" name="odsname"><br>
+		   	<label for="odsprice">상품가격:</label><br>
+		    <input type="text" name="odsprice"><br>
+		    <label for="content">상품설명:</label><br>
+      		<input type="text" name="content"><br>
+      		<input type="submit" value="등록하기">
+     </form>
     </main>
     
     <footer>

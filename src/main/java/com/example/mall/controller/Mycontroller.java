@@ -30,8 +30,14 @@ public class Mycontroller {
 	private IMalldao memdao;
 
 	  @GetMapping("/")
-	    public String index() {
-	        return "index"; 
+	    public String index(Model model) {
+	        
+		  System.out.println("리스트 불러오기");
+		  List<Goods> goodsList = msc.getGoodsList();
+		  System.out.println(goodsList);
+		  model.addAttribute("list",goodsList);
+		  
+		  return "index"; 
 	    }
 	  
 	  @RequestMapping("signinform")
@@ -52,20 +58,7 @@ public class Mycontroller {
 		  
 		  return "login";
 	  }
-	  /*
-	  @RequestMapping("login")
-	  public String login(@RequestParam("username")String username, @RequestParam("password")String password, HttpSession session) {
-		  
-		 User user = msc.login(username, password);
-		  
-		 if(user != null) {
-			 session.setAttribute("member", user);
-			 return "redirect:/";
-		 } else {
-	            return "redirect:/login?error=true";
-	        }
-	  }
-	  */
+	
 	  @RequestMapping("/login")
 	   public String loginCheck(HttpServletRequest request, HttpSession session, Model model) {
 	      String username = request.getParameter("username");
@@ -79,23 +72,36 @@ public class Mycontroller {
 	         session.setAttribute("loginMember", member);
 	         System.out.println(member);
 	         return "redirect:/";
+	         
+	         
 	      } else {
 	         model.addAttribute("errorMessage", "아이디나 비밀번호가 틀렸습니다. 다시 입력해주세요.");
 	         return "login";
 	      }
 	   }
-	  	  
-		  
-	  @RequestMapping("list")
+	  	   
+	  @RequestMapping("list") //로그인시 여기로 오게할예정
 	  public String getList(Model model) {
-		  
-		  List<Goods> goodslist = memdao.goodslist(); 
-		  model.addAttribute("list",goodslist);
-		  
-		  System.out.println(goodslist);
-		  return "redirect:/";
+		  System.out.println("리스트 불러오기");
+		  List<Goods> goodsList = msc.getGoodsList();
+		  System.out.println(goodsList);
+		  model.addAttribute("list",goodsList);
+		  		  
+		  return "list";
 	  }
 	  
-	  
+	  @RequestMapping("writeform")
+	  public String writegoodsForm() {
+		  
+		  
+		  return"writegoods";
+	  }
+	  @RequestMapping("writegoods")
+	  public String writegoods(Model model, HttpServletRequest request) {
+		  
+		  memdao.writegoods(request.getParameter("odsname"), request.getParameter("odsprice"), request.getParameter("content"));
+		  
+		  return"redirect:/";
+	  }
 	  
 }

@@ -14,17 +14,17 @@ public interface IMalldao {
 
 	//회원가입
 	public void memberjoin(@Param("mdt")Membersdto mdt);
-	//로그인
-	public void login(@Param("username") String username, @Param("password") String password);
-	//로그인 사용하는거
-
-	Optional<Membersdto> findByMemIdAndMemPw(@Param("username") String username, @Param("password") String password);
-	
+		
+	//로그인 아이디체크
 	public Membersdto userInfo(String username);
+	
 	public int loginCheck(@Param("username") String username, @Param("password") String password);
 	
 	//상품리스트
-	List<Goods> goodslist();
+	public List<Goods> goodslist();
+	
+	//등록
+	public int writegoods(String odsname, String odsprice, String content);
 	
 	
 	

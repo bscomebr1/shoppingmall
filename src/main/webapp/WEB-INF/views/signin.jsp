@@ -13,7 +13,6 @@
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>
-                <li><a href="#">About</a></li>
                 <li><a href="http://localhost:8099/signinform">signin</a></li>
                 <li><a href="http://localhost:8099/loginform">Login</a></li>
             </ul>

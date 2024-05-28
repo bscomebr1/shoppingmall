@@ -19,4 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SELECT * FROM goods
 </select>
 
+
+<insert id="writegoods">
+	INSERT INTO goods(odsname, odsprice, content) values(#{param1},#{param2},#{param3})
+</insert>
 </mapper>

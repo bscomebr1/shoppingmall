@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Goods {
 
-	private int obsid;
-	private String obsname;
-	private int obsprice;
-	private int obscount;
+	private int odsid;
+	private String odsname;
+	private int odsprice;
+	private String content;
 	 
 }
