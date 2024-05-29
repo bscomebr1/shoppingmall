@@ -13,5 +13,7 @@ public class Goods {
 	private String odsname;
 	private int odsprice;
 	private String content;
-	 
+
+	
+	  
 }

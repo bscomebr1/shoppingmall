@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,31 +11,35 @@
 </head>
 <body>
     <header>
-        <h1>Shoppingmall</h1>
+        <h1>detail</h1>
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>
-                <li><a href="http://localhost:8099/writeform">상품등록하기</a></li>
+                <li><a href="#">About</a></li>
                 <li><a href="http://localhost:8099/signinform">signin</a></li>
                 <li><a href="http://localhost:8099/loginform">Login</a></li>
             </ul>
         </nav>
-        <h1>${uesrName}</h1>
     </header>
     
     <main>
       <table border=1>
       <thead>
       	<tr>
-      		<th>상품명</th><th>상품가격</th><th>상품설명</th>
+      		<th>상품명</th><th>상품가격</th><th>상품설명</th><th>갯수</th><th>장바구니</th>
       	</tr>
       </thead>
       <tbody>
-      	<c:forEach var="dto" items="${list }">
+      	
       	<tr>
-      		<td><a href="/user/detail?odsid=${dto.odsid}"> ${dto.odsname }</td>
-      		<td>${dto.odsprice }</td>
-      		<td>${dto.content }</td>
+      		<td>${detaillist.odsname }</td>
+      		<td>${detaillist.odsprice }</td>
+      		<td>${detaillist.content }</td>
+            <form action="" method="post">
+            
+            <td><input type="text" name="cartcount" size="5"></td>
+      		<td><input type="submit" value="장바구니"></td>
+            </form> 
       	</tr>
       </c:forEach>
       </tbody>

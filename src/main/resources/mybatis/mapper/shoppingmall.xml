@@ -23,4 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="writegoods">
 	INSERT INTO goods(odsname, odsprice, content) values(#{param1},#{param2},#{param3})
 </insert>
+
+<select id="detiallist">
+	select * from goods where odsid=#{odsid}	
+</select>
+
 </mapper>

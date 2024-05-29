@@ -18,6 +18,7 @@
             </ul>
         </nav>
     </header>
+    <h2>회원가입 페이집니다</h2>
 	<!-- 내용 -->
 	<form action="signin" method="post">
 		<label for="username">Username:</label> 

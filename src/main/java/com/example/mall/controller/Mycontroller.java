@@ -2,12 +2,10 @@ package com.example.mall.controller;
 
 import java.util.List;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,13 +28,21 @@ public class Mycontroller {
 	private IMalldao memdao;
 
 	  @GetMapping("/")
-	    public String index(Model model) {
-	        
+	    public String index(Model model, HttpSession session) {
+	   
+		  
 		  System.out.println("리스트 불러오기");
 		  List<Goods> goodsList = msc.getGoodsList();
 		  System.out.println(goodsList);
-		  model.addAttribute("list",goodsList);
+		  model.addAttribute("list", goodsList);
 		  
+		  String username = (String) session.getAttribute("username");
+		  if (username != null) {
+			  model.addAttribute("username", true);
+		  }else {
+			  model.addAttribute("username", false);
+		  }
+
 		  return "index"; 
 	    }
 	  
@@ -72,8 +78,6 @@ public class Mycontroller {
 	         session.setAttribute("loginMember", member);
 	         System.out.println(member);
 	         return "redirect:/";
-	         
-	         
 	      } else {
 	         model.addAttribute("errorMessage", "아이디나 비밀번호가 틀렸습니다. 다시 입력해주세요.");
 	         return "login";
@@ -85,7 +89,7 @@ public class Mycontroller {
 		  System.out.println("리스트 불러오기");
 		  List<Goods> goodsList = msc.getGoodsList();
 		  System.out.println(goodsList);
-		  model.addAttribute("list",goodsList);
+		  model.addAttribute("list", goodsList);
 		  		  
 		  return "list";
 	  }
@@ -103,5 +107,19 @@ public class Mycontroller {
 		  
 		  return"redirect:/";
 	  }
+
+	  @RequestMapping("/user/detail")
+	  public String deatailpage(@RequestParam("odsid") int odsid, Model model) {
+		  
+		 
+		  model.addAttribute("detaillist" , memdao.detiallist(odsid));
+		  
+		  return"/user/detail";
+	  }
+	  
+	  
+	  
+	  
+	  
 	  
 }
