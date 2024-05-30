@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 
 
 @Controller
-public class Mycontroller {
+public class Commoncontroller {
 
 	@Autowired
 	private MallService msc;
@@ -84,42 +84,19 @@ public class Mycontroller {
 	      }
 	   }
 	  	   
-	  @RequestMapping("list") //로그인시 여기로 오게할예정
+	  @RequestMapping("list") 
 	  public String getList(Model model) {
-		  System.out.println("리스트 불러오기");
 		  List<Goods> goodsList = msc.getGoodsList();
-		  System.out.println(goodsList);
 		  model.addAttribute("list", goodsList);
 		  		  
 		  return "list";
 	  }
 	  
-	  @RequestMapping("writeform")
-	  public String writegoodsForm() {
-		  
-		  
-		  return"writegoods";
-	  }
-	  @RequestMapping("writegoods")
-	  public String writegoods(Model model, HttpServletRequest request) {
-		  
-		  memdao.writegoods(request.getParameter("odsname"), request.getParameter("odsprice"), request.getParameter("content"));
-		  
-		  return"redirect:/";
-	  }
+	  
 
-	  @RequestMapping("/user/detail")
-	  public String deatailpage(@RequestParam("odsid") int odsid, Model model) {
+	  
+		   
 		  
-		 
-		  model.addAttribute("detaillist" , memdao.detiallist(odsid));
-		  
-		  return"/user/detail";
 	  }
 	  
 	  
-	  
-	  
-	  
-	  
-}

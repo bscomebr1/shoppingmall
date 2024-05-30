@@ -8,6 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Header Footer Design</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="text/javascript">
+        window.onload = function() {
+            var loginError = "${loginError}";
+            if (loginError) {
+                alert("로그인이 필요합니다");
+            }
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -15,7 +23,7 @@
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>
-                <li><a href="http://localhost:8099/writeform">상품등록하기</a></li>
+                <li><a href="http://localhost:8099/admin/writeform">상품등록하기</a></li>
                 <li><a href="http://localhost:8099/signinform">signin</a></li>
                 <li><a href="http://localhost:8099/loginform">Login</a></li>
             </ul>

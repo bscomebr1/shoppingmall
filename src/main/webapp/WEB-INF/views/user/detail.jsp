@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Header Footer Design</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
@@ -23,6 +23,8 @@
     </header>
     
     <main>
+      
+     
       <table border=1>
       <thead>
       	<tr>
@@ -30,18 +32,18 @@
       	</tr>
       </thead>
       <tbody>
-      	
+      	<form action="sendcart" method="post">
       	<tr>
       		<td>${detaillist.odsname }</td>
       		<td>${detaillist.odsprice }</td>
       		<td>${detaillist.content }</td>
-            <form action="" method="post">
-            
-            <td><input type="text" name="cartcount" size="5"></td>
-      		<td><input type="submit" value="장바구니"></td>
+            <input type="text" name="goodis" value="${detaillist.goodid }">
+             <input type="hidden" name="memberid" value="${loginMember.id}">
+	            <td><input type="text" name="cartcount" size="5"></td>
+    	  		<td><input type="submit" value="장바구니"></td>
             </form> 
       	</tr>
-      </c:forEach>
+      
       </tbody>
       
       

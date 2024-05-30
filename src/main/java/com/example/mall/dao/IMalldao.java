@@ -30,4 +30,6 @@ public interface IMalldao {
 	//public List<Goods> goodslistdetail(@Param("odsid") String odsid);
 	
 	public Goods detiallist(@Param("odsid") int odsid);
+	
+	public int sendcart();
 }
