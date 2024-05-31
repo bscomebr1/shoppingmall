@@ -1,12 +1,19 @@
 package com.example.mall.controller;
 
-import org.apache.catalina.User;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.mall.dao.IMalldao;
+import com.example.mall.dto.Goods;
+import com.example.mall.dto.Goodsfile;
 import com.example.mall.dto.Membersdto;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,9 +47,30 @@ public class AdminController {
 	  }
 	  
 	  @RequestMapping("/writegoods")
-	  public String writegoods(Model model, HttpServletRequest request) {
+	  public String writegoods(HttpServletRequest request,@RequestParam("goodsimg") MultipartFile file,  Goodsfile goodsfile) {
 		  
-		  memdao.writegoods(request.getParameter("odsname"), request.getParameter("odsprice"), request.getParameter("content"));
+		  Goods goods = new Goods();
+		  goods.setOdsname(goodsfile.getOdsname());
+		  goods.setOdsprice(goodsfile.getOdsprice());
+		  goods.setContent(goodsfile.getContent());
+		  String originName = goodsfile.getFileName();
+		  
+		  String newName = UUID.randomUUID().toString() + "_" + originName;
+		  goods.setGoodsimg(newName);
+		  
+		  File file2 = new File(goods.getGoodsimg());
+			try {
+		        file.transferTo(file2);
+		        goods.setGoodsimg(newName);
+				//goodsfile.getGoodsimg().transferTo(file2);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			System.out.println("어케들어가지 :" + goods);
+			memdao.writegoods(goods);
+		  //memdao.writegoods(request.getParameter("odsname"), request.getParameter("odsprice"), request.getParameter("content"),request.getParameter("goodsimg"));
 		  
 		  return"redirect:/";
 	  }

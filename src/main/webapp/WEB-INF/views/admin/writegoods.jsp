@@ -34,12 +34,16 @@
 
 	<main>
 
-		<form action="writegoods" method="post">
-			<label for="odsname">상품명:</label><br> <input type="text"
-				name="odsname"><br> <label for="odsprice">상품가격:</label><br>
-			<input type="text" name="odsprice"><br> <label
-				for="content">상품설명:</label><br> <input type="text"
-				name="content"><br> <input type="submit" value="등록하기">
+		<form action="writegoods" method="post" enctype="multipart/form-data">
+			<label for="odsname">상품명:</label><br>
+			<input type="text" name="odsname"><br>
+			<label for="odsprice">상품가격:</label><br>
+			<input type="text" name="odsprice"><br>
+			<label for="content">상품설명:</label><br>
+			<input type="text" name="content"><br>
+			<label for="goodsimg">상품 이미지</label>
+			<input type="file" name="goodsimg" multiple><br>
+			<input type="submit" value="등록하기">
 		</form>
 	</main>
 

@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <insert id="writegoods">
-	INSERT INTO goods(odsname, odsprice, content) values(#{param1},#{param2},#{param3})
+	INSERT INTO goods(odsname, odsprice, content, goodsimg) values(#{goods.odsname},#{goods.odsprice},#{goods.content},#{goods.goodsimg})
 </insert>
 
 <select id="detiallist">

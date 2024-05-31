@@ -1,5 +1,7 @@
 package com.example.mall.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.mall.dao.ICartdao;
 import com.example.mall.dao.IMalldao;
-import com.example.mall.dto.Cartdto;
+import com.example.mall.dao.IMemberdao;
 import com.example.mall.dto.Membersdto;
+import com.example.mall.dto.Mypagedto;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -22,28 +25,36 @@ public class MemberController {
 	private IMalldao memdao;
 	@Autowired
 	private ICartdao cartdao;
+	@Autowired
+	private IMemberdao memberdao;
+	
 	
 	 @RequestMapping("/mypage")
-	  public String mypage(HttpServletRequest request) {
+	  public String mypage(HttpServletRequest request, Model model) {
 		  
-		  
-		  return "";
+		 HttpSession session = request.getSession();
+		 Membersdto member = (Membersdto) session.getAttribute("loginMember");
+		 
+		 
+		 
+		 List<Mypagedto> mypagelist = memberdao.mypageList(); 
+		 model.addAttribute("my",mypagelist);		 
+		 return "/user/mypage";
 	  }
 	 
 	 
 	 @RequestMapping("/sendcart")
-	  public String sendcart(HttpServletRequest request, @RequestParam("memberid") int memberid, @RequestParam("goodsid") int goodsid, @RequestParam("odsname") String odsname, @RequestParam("cartcount") int cartcount) {
+	  public String sendcart(HttpServletRequest request, @RequestParam("memberid") int memberid, @RequestParam("odsid") int odsid, @RequestParam("odsname") String odsname, @RequestParam("cartcount") int cartcount) {
 		  
 		 HttpSession session = request.getSession();
 		 Membersdto member = (Membersdto) session.getAttribute("loginMember");
 		
 		 System.out.println("멤버아이디" + memberid);
-		 System.out.println("상품코드"+goodsid);
+		 System.out.println("상품코드"+odsid);
 		 System.out.println("상품명" + odsname);
 		 System.out.println("장바구니에 넣는수" + cartcount);
-		 
-		 
-		 cartdao.writeCart(memberid, goodsid, odsname, cartcount);
+		  
+		 cartdao.writeCart(memberid, odsid, odsname, cartcount);
 		
 		  return "redirect:/";
 	  }

@@ -1,10 +1,10 @@
 package com.example.mall.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.mall.dto.Goods;
 import com.example.mall.dto.Membersdto;
@@ -24,8 +24,8 @@ public interface IMalldao {
 	public List<Goods> goodslist();
 	
 	//등록
-	public int writegoods(String odsname, String odsprice, String content);
-	
+	//public int writegoods(String odsname, String odsprice, String content, String goodsimg);
+	public int writegoods(@Param("goods") Goods goods);
 	//디테일
 	//public List<Goods> goodslistdetail(@Param("odsid") String odsid);
 	
