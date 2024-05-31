@@ -36,14 +36,11 @@ public class AdminController {
 			model.addAttribute("foradmin", "관리자 페이지입니다.");
 			return "redirect:/";
 			
-		}else {
-			
-			
+		}else {		
 			return"/admin/writegoods";
 			
 		}
-		
-		  
+	
 	  }
 	  
 	  @RequestMapping("/writegoods")

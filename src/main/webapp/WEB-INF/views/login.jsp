@@ -6,12 +6,11 @@
 <meta charset="UTF-8">
 <title>Login</title>
 <link rel="stylesheet" href="css/styles.css">
-
-
+<link rel="stylesheet" href="css/singinlogin.css">
 </head>
 <body>
  <header>
-        <h1>Shoppingmall</h1>
+        <h1>로그인</h1>
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>

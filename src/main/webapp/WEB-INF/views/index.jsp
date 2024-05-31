@@ -31,7 +31,7 @@
 </head>
 <body>
     <header>
-        <h1>Shoppingmall</h1>
+        <h1>PhonepalAh</h1>
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>

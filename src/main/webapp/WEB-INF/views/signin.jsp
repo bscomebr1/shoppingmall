@@ -6,10 +6,11 @@
 <meta charset="UTF-8">
 <title>Login</title>
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/singinlogin.css">
 </head>
 <body>
  <header>
-        <h1>Shoppingmall</h1>
+        <h1>회원가입</h1>
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>
@@ -18,14 +19,14 @@
             </ul>
         </nav>
     </header>
-    <h2>회원가입 페이집니다</h2>
+    
 	<!-- 내용 -->
 	<form action="signin" method="post">
 		<label for="username">Username:</label> 
 		<input type="text" id="username" name="username" ><br><br> 
 		<label for="password">Password:</label>
 		<input type="password" id="password" name="password" ><br><br>
-		<input type="text" name="role" value="ROLE_MEMBER">
+		<input type="hidden" name="role" value="ROLE_MEMBER">
 		<input type="submit" value="Login">
 	</form>
 <!-- 내용 끝 -->
