@@ -31,13 +31,14 @@ public class AdminController {
 		  
 		HttpSession session = request.getSession();
 		Membersdto member = (Membersdto) session.getAttribute("loginMember");
-		if(member == null || !member.getRole().equals("ROLE_ADMIN")){
+		
+		if(member == null || member.getRole().equals("ROLE_MEMBER")){
+			return"/admin/writegoods";
 			
+		}else {		
 			model.addAttribute("foradmin", "관리자 페이지입니다.");
 			return "redirect:/";
 			
-		}else {		
-			return"/admin/writegoods";
 			
 		}
 	

@@ -67,22 +67,38 @@ public class Commoncontroller {
 	
 	  @RequestMapping("/login")
 	   public String loginCheck(HttpServletRequest request, HttpSession session, Model model) {
-	      String username = request.getParameter("username");
+	       String username = request.getParameter("username");
 	      String password = request.getParameter("password");
 	      
 	      int result = memdao.loginCheck(username, password);
 	      System.out.println(result);
 	      
 	      if(result == 1) {
-	         Membersdto member = (Membersdto)memdao.userInfo(username);
+	         Membersdto member = memdao.userInfo(username);
+	         
 	         session.setAttribute("loginMember", member);
-	         System.out.println(member);
+	         session.setAttribute("loginname", member.getUsername());
+	         session.setAttribute("loginadmin",member.getRole());
+	         System.out.println("맴버에 뭐가 담기는지 :"+member);
 	         return "redirect:/";
 	      } else {
 	         model.addAttribute("errorMessage", "아이디나 비밀번호가 틀렸습니다. 다시 입력해주세요.");
 	         return "login";
 	      }
 	   }
+	  
+	  @RequestMapping("/logout")
+	  public String logout() {
+		  
+		  
+		  return"redirect:/";
+	  }
+	  @GetMapping("/logout")
+		public String logout(HttpSession session) {
+			session.invalidate();
+			return "redirect:/";
+		}
+	  
 	  	   
 	  @RequestMapping("list") 
 	  public String getList(Model model) {

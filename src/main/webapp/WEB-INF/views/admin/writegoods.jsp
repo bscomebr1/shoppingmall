@@ -2,21 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CSS Header Footer Design</title>
 <link rel="stylesheet" href="../css/styles.css">
-<script type="text/javascript">
-	window.onload = function() {
-		var accessError = "${foradmin}";
-		if (accessError) {
-			alert("관리자페이지입니다");
-			window.location.href = "/"; // Redirect to home page or another appropriate page
-		}
-	}
-</script>
+
 
 </head>
 <body>

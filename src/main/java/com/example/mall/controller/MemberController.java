@@ -64,7 +64,7 @@ public class MemberController {
 		 
 		  
 		 HttpSession session = request.getSession();
-		 Membersdto member = (Membersdto) session.getAttribute("loginMember");
+		 Membersdto member =  (Membersdto)session.getAttribute("loginMember");
 		 System.out.println("member입니다 --" + member);
 		 if (member == null) {
 			 model.addAttribute("loginError", "로그인이 필요합니다");

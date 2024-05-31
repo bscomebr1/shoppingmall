@@ -35,10 +35,28 @@
         <nav>
             <ul>
                 <li><a href="http://localhost:8099/">Home</a></li>
-                <li><a href="http://localhost:8099/admin/writeform">상품등록하기</a></li>
+                <c:if test="${sessionScope.loginadmin ne 'ROLE_ADMIN'}">
+				<li><a href="http://localhost:8099/admin/writeform">상품등록하기</a></li>
+				</c:if>
+                <c:if test="${sessionScope.loginMember eq null}">
                 <li><a href="http://localhost:8099/signinform">signin</a></li>
+                </c:if>
+               
+        </nav>
+        <nav>
+	        <ul>
+		         <c:if test="${sessionScope.loginMember eq null}">
                 <li><a href="http://localhost:8099/loginform">Login</a></li>
+                </c:if>
+                <c:if test="${sessionScope.loginMember ne null }">
+                <li><a href="http://localhost:8099/logout">Logout</a></li>
+                </c:if>
+                <c:if test="${sessionScope.loginMember ne null}">
+                <li>${sessionScope.loginname}님 반갑슴다</a></li>
+                </c:if>
+                
             </ul>
+	        </ul>
         </nav>
     </header>
     
